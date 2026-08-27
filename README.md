@@ -1,3 +1,3 @@
 ## Imagem de exemplo do projeto:
 
-[foto de exemplo](assets/image.png)
+<img src="assets/image.png">
