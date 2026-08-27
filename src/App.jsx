@@ -1,17 +1,32 @@
 import { useState } from 'react'
-import './App.css'
+import { useEffect } from 'react';
+import './App.css';
 
-import User from './components/User'
+import User from './components/User';
 
 function App() {
-  return (
-    <>
-      <User image="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAMAAABC4vDmAAAAkFBMVEX////X2+TX2+YfHR4dGhzOzc4AAABbWVoTEBLd4ewRDQ0VDhKZnaKdnKMaFxjf5e5AQkTL0NeHiIpGR0tpaWyQkJYpJyi9wciAf4V7foEJAQJvcHMUFRMYEg/g4OCwsLDw8PC5urtdXmM9PDynq7IjHiS2uL8JCwYdHxw1MzjBx8lQUlUdGBO8vckwLzArLTKBgunhAAAEnElEQVR4nO2cDXeaOhiAmwRfSERiVEBhtGtJ8W6u3v//7274UKHtjs4k4l3z7JwpJi3PeRtCPnh9eHA4HA6Hw+FwfEken3LfEPnToxGl74sIWGAIBsHiu77TJMoIeY0MQQjJoomu02MSEALbcm6EcgseCRLdP+E8IEEpEeImoBTLUv3CuZ7TMygnwTEyBRXKCp61pHzVCgQ1poQQpoKQyNdxeiw9lpsLUy2FcR54pU6rmhDCQmrSCmM6U5ezzgU48cjUvBQjnpNyUk7KSdmRwgOGH3xu8KF8JKnBW/tSGIkew+OjUCpl1RRiMaxtSYr70OOflMrt8SiQTZU4aY6SVUVT0q/tU1tSEWRZxl6Jp14ykHSdEZa1QFyftdwWLCLeNIMll3XlLCKv07o44rakqlixyKJd/TpDdM2yRdwyU38gmkPwYyErGed75RjWn++8tkplK1LqtJRyAWxNaxBeMxCctqjSn/ugRN0RbqvzjapyKLckVf9WAcW6PUUj1St6JhDzYafQSPV/3poU2/xOqtihYe3bSRU9qcM0pz6clL8KPxS8Fy06RqRIkpCaqFKn4xVjEQt+bCpxe6lepEhUNNNxWNW1eLUDiCKAZUhHjFThvzT4b20lmsZ+uWURdFVGiZS63lFzYzvW4UjIFRBI8WiRGp6x/VSJhUHbw48VqX4h7apS1WMtbizFPukSmm5gJkW9isFRHqg742iRCvKOjcBYAitXizBc71iQoNHaFBDGWFEUrKjbULUHFmQAWQD7t7Z206Mj61II/QuyeyeTbweSSh2n8S4AYEA2XQ+B1ABmj+1HSiEO9xF6Gu22lVRzEqnqz08LWlQMf3ak2Yy6BHuj9PelX2SK5aSclJNyUn+tlMVVFy40sLSWIJbs+o0+tmyHVYal6AyIBjCjFqRwBZBdDUBlp03JhQZP1q4+ej3d0OqOugR0HO7dl9TBzUk5KSf110hhDWxJ0fOn/j12dhyw2MyXVzPPrUipoYungZ2hCw1B5xmzbmnPeJuKVxrEdhr65/vEo3cJavyB2/+aN+9f8eDfqfjwYknqLiPlpJzUV5C6fDDwxaUumnSe0TIuFa7yc6wWN45UCNOzY4Ep5PyWUmrocsmwyb+pFBL5+ZHnfPdxU7l1wbYWOC5YRfy4b9XAha1VF41O9AX2qY3lRR1ysLS8eD3cB+IVb/cVKRUnksluM3xUqdNzJnWcWGjrmbw/4fQQZR0nCO0+/nYZFYO8mUvwF6hTEo7b7yNK8Y263PJ6Uqbi5IE89fIjSlFZt+0V56s2TqcS85PRi9bLW8Kpp2LVxqmfd2N61QVV8Xlkd9nxsI4RIyQKB3do06OE6pKEuu5hLsUs8MiwPdmQCi/ZxcqOQxcVK49k4buRjPFFs11ynv3TsQXRcJ8M2pONho5ElZ6l/xAQT9MPuWU2Vl3ubzZjAid1SylCgnuUYjPTUiHTSzo0n56p7kK66ZnmE1mRfiJrl/JrzgpzUX7TTfk9JEcbyY1WYFlOtZOjmzRyz1wa+dRIGnmbcE/uK+G+/WqCTGerqE9m5qsJHu7ySxwcDofD4XA4HP87/gMGQ9gVaFtokQAAAABJRU5ErkJggg=="
-      firstName="Heitor" lastName="Silva" gender="male" age="18"/>
+  const [users, setUsers] = useState([]);
+  
+  useEffect(() => {
+    fetch('https://dummyjson.com/users')
+    .then((resposta) => resposta.json())
+    .then((dados) => setUsers(dados.users));
+  }, []);
 
-      <User />
-    </>
+  return (
+    <div className='app'>
+      <h1>Lista de usuários</h1>
+
+      <hr className='app-divider'/>
+
+      {users.map((user) => (
+        <User image={user.image} firstName={user.firstName} lastName={user.lastName} age={user.age}
+          gender={user.gender} email={user.email} phone={user.phone} companyName={user.company.name}
+          companyTitle={user.company.title} adressCity={user.address.city} adressStateCode={user.address.stateCode} />
+        ))}
+
+    </div>
   )
 }
 
-export default App
+export default App;

@@ -1,17 +1,32 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 100vw;
+  background-color: white;
+}
+
 .cartao {
   display: flex;
-  max-width: 90vw;
-  background-color: brown;
+  width: 85vw;
   flex-flow: wrap;
   margin: auto;
   margin-bottom: 30px;
+  border-color: black;
+  border-style: solid;
+  border-radius: 32px;
+  margin-top: 15px;
+  padding: 12px;
+  background-color: aliceblue;
 }
 
 .block1 {
   display: flex;
   flex-direction: row;
-  background-color: aquamarine;
   width: 100%;
+  flex-wrap: nowrap;
 }
 
 .block2 {
@@ -20,13 +35,29 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  background-color: aqua;
+}
+
+.block3 {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .divider {
-  width: 86%;
+  margin: 16px;
+  width: 90%;
   border-top: 2px dashed black;
-  margin-left: 6%;
+  margin-left: 5%;
+}
+
+.app-divider {
+  margin: 32px;
+  margin-top: 20px;
+  width: 94%;
+  margin-left: 3%;
+  border: 2px solid black;
 }
 
 img {
@@ -35,6 +66,7 @@ img {
   border-width: 3px;
   border-style: solid;
   border-radius: 50%;
+  background-color: white;
 }
 
 h2 {
@@ -46,6 +78,6 @@ h3 {
   margin: 0;
 }
 
-h2, h3, h4, h5 {
+h1, h2, h3, h4, h5 {
   font-family: Arial, Helvetica, sans-serif
 }

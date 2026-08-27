@@ -1,4 +1,4 @@
-function User ({ image, firstName, lastName, age, gender, email, phone, companyName, companyTitle, adressCity}) {
+function User ({ image, firstName, lastName, age, gender, email, phone, companyName, companyTitle, adressCity, adressStateCode }) {
     return (
         <>
             <div className="cartao">
@@ -13,11 +13,20 @@ function User ({ image, firstName, lastName, age, gender, email, phone, companyN
                 <hr className="divider"/>
 
                 <div className="block1">
-                    <h3><strong>Email: </strong>{}</h3>
-                    <h3><strong>Telefone: </strong>{}</h3>
-                    <h3><strong>Empresa: </strong>{}</h3>
-                    <h3><strong>Cargo: </strong>{}</h3>
-                    <h3><strong>Cidade: </strong>{}</h3>
+                    <div className="block3">
+                        <h3><strong>Email: </strong></h3>
+                        <h3><strong>Telefone: </strong></h3>
+                        <h3><strong>Empresa: </strong></h3>
+                        <h3><strong>Cargo: </strong></h3>
+                        <h3><strong>Cidade: </strong></h3>
+                    </div>
+                    <div className="block3">
+                        <h3>{email}</h3>
+                        <h3>{phone}</h3>
+                        <h3>{companyName}</h3>
+                        <h3>{companyTitle}</h3>
+                        <h3>{adressCity} - {adressStateCode}</h3>
+                    </div>
                 </div>
             </div>
         </>
